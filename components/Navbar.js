@@ -1,8 +1,4 @@
-import {
-  Box,
-  Container,
-  useColorModeValue,
-} from '@chakra-ui/react'
+import { Box, Container, useColorModeValue } from '@chakra-ui/react'
 
 import { ThemeTogglerButton } from './ThemeTogglerButton'
 
