@@ -1,3 +1,4 @@
+import NextLink from 'next/link'
 import {
   Container,
   Box,
@@ -83,37 +84,58 @@ export default function Page() {
             align="center"
             mt={{ base: 4, md: 0 }}
           >
-            <Button
-              width="100%"
-              leftIcon={<RiGithubFill />}
-              colorScheme={useColorModeValue('purple', 'orange')}
-            >
-              Github
-            </Button>
+            <NextLink href="https://github.com/diegosano/" passHref>
+              <Button
+                as="a"
+                target="_blank"
+                referrerPolicy="no-referrer"
+                width="100%"
+                leftIcon={<RiGithubFill />}
+                colorScheme={useColorModeValue('purple', 'orange')}
+              >
+                Github
+              </Button>
+            </NextLink>
 
-            <Button
-              width="100%"
-              leftIcon={<RiLinkedinBoxFill />}
-              colorScheme={useColorModeValue('purple', 'orange')}
-            >
-              LinkedIn
-            </Button>
+            <NextLink href="https://www.linkedin.com/in/diego-sano/" passHref>
+              <Button
+                as="a"
+                target="_blank"
+                referrerPolicy="no-referrer"
+                width="100%"
+                leftIcon={<RiLinkedinBoxFill />}
+                colorScheme={useColorModeValue('purple', 'orange')}
+              >
+                LinkedIn
+              </Button>
+            </NextLink>
 
-            <Button
-              width="100%"
-              leftIcon={<RiInstagramLine />}
-              colorScheme={useColorModeValue('purple', 'orange')}
-            >
-              Instagram
-            </Button>
+            <NextLink href="https://www.instagram.com/diego_ceccarelli/" passHref>
+              <Button
+                as="a"
+                target="_blank"
+                referrerPolicy="no-referrer"
+                width="100%"
+                leftIcon={<RiInstagramLine />}
+                colorScheme={useColorModeValue('purple', 'orange')}
+              >
+                Instagram
+              </Button>
+            </NextLink>
 
-            <Button
-              width="100%"
-              leftIcon={<RiMailFill />}
-              colorScheme={useColorModeValue('purple', 'orange')}
-            >
-              Contact me
-            </Button>
+            <NextLink href="mailto:diegocsano@outlook.com" passHref>
+              <Button
+                as="a"
+                target="_blank"
+                referrerPolicy="no-referrer"
+                width="100%"
+                title="diegocsano@outlook.com"
+                leftIcon={<RiMailFill />}
+                colorScheme={useColorModeValue('purple', 'orange')}
+              >
+                Contact me
+              </Button>
+            </NextLink>
           </Stack>
         </Section>
       </Container>
