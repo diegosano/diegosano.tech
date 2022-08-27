@@ -16,6 +16,7 @@ export default function Website({ Component, pageProps, router }) {
               name="viewport"
               content="width=device-width, initial-scale=1"
             />
+            <meta name="description" content="My personal website" />
           </Head>
           <Component {...pageProps} key={router.route} />
         </AnimatePresence>
