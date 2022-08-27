@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { Box } from "@chakra-ui/react";
+import { Box } from '@chakra-ui/react'
 
 export const ComputerContainer = forwardRef(({ children }, ref) => {
   return (
