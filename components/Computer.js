@@ -27,9 +27,9 @@ export const Computer = () => {
     }
   }, [])
 
-  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     const { current: container } = containerRef
+
     if (container) {
       const scW = container.clientWidth
       const scH = container.clientHeight
