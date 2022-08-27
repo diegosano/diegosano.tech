@@ -1,12 +1,13 @@
 import NextLink from 'next/link'
+import NextImage from 'next/image'
 import {
   Container,
   Box,
   Heading,
-  Image,
   useColorModeValue,
   Stack,
   Button,
+  chakra,
 } from '@chakra-ui/react'
 import {
   RiGithubFill,
@@ -59,19 +60,28 @@ export default function Page() {
               alignItems="center"
               justifyContent="center"
             >
-              <Image
+              <Box
+                w={100}
+                h={100}
                 borderColor={useColorModeValue(
                   'blackAlpha.900',
                   'whiteAlpha.800',
                 )}
                 borderWidth={2}
                 borderStyle="solid"
+                borderRadius="full"
                 maxWidth="120px"
                 display="inline-block"
-                borderRadius="full"
-                src="/images/diegosano.jpg"
-                alt="Profile image"
-              />
+                overflow="hidden"
+              >
+                <ProfileImage
+                  src="/images/diegosano.jpg"
+                  alt="Profile image"
+                  width="100%"
+                  height="100%"
+                  borderRadius="full"
+                />
+              </Box>
             </Box>
           </Box>
         </Section>
@@ -110,7 +120,10 @@ export default function Page() {
               </Button>
             </NextLink>
 
-            <NextLink href="https://www.instagram.com/diego_ceccarelli/" passHref>
+            <NextLink
+              href="https://www.instagram.com/diego_ceccarelli/"
+              passHref
+            >
               <Button
                 as="a"
                 target="_blank"
@@ -142,3 +155,7 @@ export default function Page() {
     </Article>
   )
 }
+
+const ProfileImage = chakra(NextImage, {
+  shouldForwardProp: prop => ['width', 'height', 'src', 'alt'].includes(prop),
+})
