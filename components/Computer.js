@@ -1,9 +1,10 @@
-import { Box, Spinner } from '@chakra-ui/react'
-import { useState, useEffect, useRef, useCallback } from 'react'
 import * as THREE from 'three'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+
 import { loadGLTFModel } from '../lib/model'
-// import { DogSpinner, DogContainer } from './voxel-dog-loader'
+import { ComputerContainer } from './ComputerContainer'
+import { ComputerSpinner } from './ComputerSpinner'
 
 function easeOutCirc(x) {
   return Math.sqrt(1 - Math.pow(x - 1, 4))
@@ -11,12 +12,13 @@ function easeOutCirc(x) {
 
 export const Computer = () => {
   const containerRef = useRef()
-  const [loading, setLoading] = useState(true)
-  const refRenderer = useRef()
+  const rendererRef = useRef()
+  const [isLoading, setIsLoading] = useState(true)
 
   const handleWindowResize = useCallback(() => {
-    const { current: renderer } = refRenderer
+    const { current: renderer } = rendererRef
     const { current: container } = containerRef
+
     if (container && renderer) {
       const scW = container.clientWidth
       const scH = container.clientHeight
@@ -43,10 +45,9 @@ export const Computer = () => {
 
       container.appendChild(renderer.domElement)
 
-      refRenderer.current = renderer
+      rendererRef.current = renderer
 
       const scene = new THREE.Scene()
-      // const target = new THREE.Vector3(-0.5, 1.2, 0)
       const target = new THREE.Vector3(-0.5, 0.5, 0)
       const initialCameraPosition = new THREE.Vector3(
         60 * Math.sin(0.2 * Math.PI),
@@ -71,7 +72,7 @@ export const Computer = () => {
         castShadow: false,
       }).then(() => {
         animate()
-        setLoading(false)
+        setIsLoading(false)
       })
 
       let req = null
@@ -112,31 +113,9 @@ export const Computer = () => {
     return () => window.removeEventListener('resize', handleWindowResize, false)
   }, [handleWindowResize])
 
-  // return (
-  //   <DogContainer ref={containerRef}>{loading && <DogSpinner />}</DogContainer>
-  // )
-
   return (
-    <Box
-      ref={containerRef}
-      className="computer"
-      m="auto"
-      mt={['-20px', '-60px', '-120px']}
-      mb={['-40px', '-140px', '-200px']}
-      w={[280, 480, 640]}
-      h={[280, 480, 640]}
-      position="relative"
-    >
-      {loading && (
-        <Spinner
-          size="xl"
-          position="absolute"
-          left="50%"
-          top="50%"
-          ml="calc(0 - var(--spinner-size) / 2)"
-          mt="calc(0 - var(--spinner-size))"
-        />
-      )}
-    </Box>
+    <ComputerContainer ref={containerRef}>
+      {isLoading && <ComputerSpinner />}
+    </ComputerContainer>
   )
 }
