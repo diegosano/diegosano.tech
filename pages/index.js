@@ -47,7 +47,7 @@ export default function Page() {
                 mb={4}
                 textAlign={{ base: 'center', md: 'left' }}
               >
-                Hello, I&apos;m a Full Stack and Web3 Software Developer based on Brazil!
+                Hello, I&apos;m a Full Stack and Web3 Software Developer based in Brazil!
               </Box>
             </Box>
 
