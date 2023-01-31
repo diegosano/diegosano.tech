@@ -121,7 +121,7 @@ export default function Page() {
             </NextLink>
 
             <NextLink
-              href="https://www.instagram.com/diego_ceccarelli/"
+              href="https://www.instagram.com/diegosano.dev/"
               passHref
             >
               <Button
